@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "6006:6006"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    container_name: eclipse-ui-front
+    command: npm run storybook
+
+  # storybook:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "6006:6006"
+  #   volumes:
+  #     - .:/app
+  #   container_name: eclipse-ui-storybook
+  #   command: ["npm", "run", "storybook"]  # Запуск storybook
